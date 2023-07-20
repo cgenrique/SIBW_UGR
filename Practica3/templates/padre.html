@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <!-- Llamada a la hoja de estilo CSS -->
+    {% block styles %} <link rel="stylesheet" href="styles/styles.css"> {% endblock %}
+
+    {% block scripts %} {% endblock %}
+
+    <!-- Titulo de la pestaña -->
+    <title>{% block titulo %}{% endblock %}</title> 
+</head>
+
+<!-- Cabecera formada por logo, título y menú de navegación -->
+    {% block cabecera %}
+<header>
+    <div class="logo">
+        <img src="imagenes/logo.jpg">
+    </div>
+
+    <div class="title">
+        <h1> Mentes mas brillantes de la historia</h1>
+        <nav>
+            <ul>
+                <li><a href="#">Menu1</a></li>
+                <li><a href="#">Menu2</a></li>
+                <li><a href="#">Menu3</a></li>
+            </ul> 
+        </nav>
+    </div>
+</header>
+    {% endblock %}
+
+<!-- Cuerpo de la página -->
+<body>
+    
+    <section>
+            <section>
+                {% block central %}
+
+                <p>Parte central de la plantilla</p>
+
+                {% endblock %}
+            </section>
+            
+            {% block panelAuxiliar %}
+            <!-- Panel auxiliar -->
+            <div class="panel-auxiliar">
+                <h1>Panel Auxiliar</h1>
+            </div>
+            {% endblock %}
+    </section>
+
+
+</body>
+
+<!--Pie de págia con información de contacto -->
+<footer>
+    &copy; 2023 Enrique Camacho Garcia - cgenrique@correo.ugr.es
+</footer>
+
+</html>
