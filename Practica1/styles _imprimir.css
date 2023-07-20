@@ -1,0 +1,91 @@
+/*Se eliminan los estilos de colores, los fondos, los bordes y marcos. Solo texto negro sobre blanco*/
+p {
+    color: black;
+    text-align: center;
+}
+
+
+.logo img{
+  max-width: 200px;
+}
+
+.title{
+
+  text-align: center;
+  flex-grow: 1;
+}
+
+h1{
+  font-family: times;
+  font-size: 40px;
+  text-align: center;
+  margin: 30px;
+}
+
+header{
+  display: flex;
+  justify-content: space-between;
+}
+
+section {
+  display: flex;
+}
+
+.cientifico{
+  color: black;
+  display: flex;
+}
+
+.infoCientifico{
+  flex-direction: column;
+  align-items: center;
+}
+
+.cientifico p{
+  text-align: justify;
+  font-size: 25px;
+  margin-left: 30px;
+  font-family: times;
+}
+
+.imagenesCientifico{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 45%;
+  margin-left: 5%;
+}
+
+.imagenesCientifico img{
+  padding: 20px;
+  max-width: 250px;
+  max-height: 300px;
+}
+
+.imagenesCientifico p{
+  font-size: 20px;
+  margin: 0px;
+}
+
+.cientifico h1{
+  font-family: times;
+  text-align: left;
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.cientifico h2{
+  font-family: times;
+  margin-bottom: 20px;
+  margin: 30px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+footer{
+  margin-top: 10px;
+  text-align: center;
+  font-family: times;
+  font-size: 20px;
+}
+
