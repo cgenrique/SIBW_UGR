@@ -1,0 +1,29 @@
+{% extends "padre.html" %}
+
+{% block scripts %}{% endblock %}
+{% block titulo %}Comentarios{% endblock %}
+
+{% block central %}
+    <div class="todosComentarios">
+        <h1>Comentarios</h1><br>
+        {% for comentario in comentarios %}
+            <div class="comentarioVistaModerador">
+                <p><strong>Id del comentario:</strong> {{ comentario.id_comentario }}</p>
+                <p><strong>Autor del comentario:</strong> {{ comentario.nombreAutor }}</p>
+                <p><strong>Id del científico:</strong> {{ comentario.id_cientifico }}</p>
+                <p><strong>Contenido:</strong> {{ comentario.contenido }}</p>
+                <p><strong>Escrito el día:</strong> {{ comentario.fecha }} a las {{ comentario.hora }}</p>
+                {% if usuario.id_rol == 4 or usuario.id_rol == 2 or comentario.id_usuario == usuario.id_usuario %}
+                    <div class="accionesModerador">
+                        <a href="./editarComentario.php?id_comentario={{comentario.id_comentario}}"><img src="https://cdn-icons-png.flaticon.com/512/269/269074.png" height="30" width="30"></a>
+                        <a href="./eliminarComentario.php?id_comentario={{comentario.id_comentario}}"><img src="https://cdn-icons-png.flaticon.com/512/1214/1214926.png" height="30" width="30"></a>
+                    </div>
+                {% endif %}
+            </div><br>
+        {% endfor %}
+        <p><a href="/index.php">Volver al menú principal</a></p>
+    </div>
+    
+{% endblock %}
+
+

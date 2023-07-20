@@ -1,0 +1,12 @@
+{% extends "cientifico.html" %}
+
+{% block central %}
+        <div class="cambiarComentario">
+                <form action="./editarComentario.php?id_comentario={{comentario.id_comentario}}" method="post">
+                       
+                        Comentario a modificar: <br>
+                        <textarea rows="4" cols="80" id="coment_box" placeholder="{{comentario.contenido}}" name="coment_box"></textarea>
+                        <button type="submit" hrefr="/cientifico.php?cientifico={{comentario.id_cientifico}}" value="Modificar Comentario">Modificar</button>
+                </form>
+        </div>
+{% endblock %}

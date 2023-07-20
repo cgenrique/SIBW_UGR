@@ -1,0 +1,30 @@
+{% extends "padre.html" %}
+
+{% block registro_login %}
+    <div class="loggeo">
+    <form action="/login.php" method="post">
+        <div class="input">
+            <label for="nick">Usuario:</label>
+            <br>
+            <input type="text" id="nick" name="nick" />
+        </div>
+        <br>
+        <div class="input">
+            <label for="contrasenia">Password:</label>
+            <br>
+            <input type="password" id="contrasenia" name="contrasenia" />
+        </div>
+        <br>
+        <input type="submit" value="Log in" />
+        <br>
+        <div class="usuario-anonimo">
+            <p>¿Aún no estás registrado?</p>
+            <br>
+            <a href="/registro.php" class="button">Regístrate</a>
+        </div>
+    </form>
+</div>
+{% endblock %}
+
+ 
+{% block central %}{% endblock %}

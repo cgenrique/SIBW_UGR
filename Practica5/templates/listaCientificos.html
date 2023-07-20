@@ -1,0 +1,16 @@
+{% extends "padre.html" %}
+
+
+{% block titulo %}Añadir Comentario{% endblock %}
+
+{% block central %}
+    <div>
+        <div>
+            <h2>Listado Cientificos</h2>
+        </div>
+        {% for cientifico in cientificos %}
+            <a href="/cientifico.php?id={{ cientifico.id }}"><p>{{ cientifico.nombre }}</p></a>
+        {% endfor %}
+        <br><a href="/nuevoCientifico.php"><p>Añadir cientifico</p></a>
+    </div>
+{% endblock %}

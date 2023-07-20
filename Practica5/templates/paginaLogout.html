@@ -1,0 +1,16 @@
+{% extends "padre.html" %}
+
+{% block registro_login %}
+    <div id="loggeo">
+    <form action="./login.php" method="post">
+        <div class="usuario-anonimo">
+            <p>Has cerrado sesión</p>
+			<a href="login.php">Iniciar sesión</a>
+            <p>¿Aún no estás registrado?</p>
+            <a href="registro.php" class="button">Regístrate</a>
+		</div>
+    </div>
+{% endblock %}
+
+ 
+{% block central %}{% endblock %}

@@ -1,0 +1,39 @@
+{% extends "padre.html" %}
+
+{% block scripts %}{% endblock %}
+{% block titulo %}Añadir Comentario{% endblock %}
+
+{% block central %}
+<div class="addCientifico">
+    <h1>Añadir nuevo científico</h1><br>
+    <form action="./nuevoCientifico.php" method="post">
+      <div class="input">
+        <label for="nombre">Nombre:</label>
+        <input type="text" id="nombre" name="nombre" required />
+      </div>
+      <div class="input">
+        <label for="fechas">Fechas:</label>
+        <input type="text" id="fechas" name="fechas" required />
+      </div>
+      <div class="input">
+        <label for="descripcion">Descripción:</label>
+        <textarea id="descripcion" name="descripcion" required></textarea>
+      </div>
+      <div class="input">
+        <label for="lugarNacimiento">Lugar de nacimiento:</label>
+        <input type="text" id="lugarNacimiento" name="lugarNacimiento" required />
+      </div>
+      <div class="input">
+        <label for="publicado">Publicar:</label>
+        <input type="checkbox" id="publicado" name="publicado" />
+      </div>
+      <div class="botonesAniadirComentario">
+        <input type="submit" value="Añadir Científico" />
+        <a href="/index.php">Volver al menú principal</a>
+      </div>
+    </form>
+  </div>
+  
+
+    
+{% endblock %}

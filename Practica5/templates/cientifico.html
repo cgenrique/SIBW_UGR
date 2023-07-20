@@ -1,0 +1,120 @@
+{% extends "padre.html" %}
+
+{% block scripts %} <script src="./panelComentarios.js" defer></script>{% endblock %}
+{% block titulo %}{{ cientifico['nombre'] }}{% endblock %}
+
+{% block central %}
+    <div class="cientifico">
+        <div class="infoCientifico">
+            <h1>{{ cientifico['nombre'] }}</h1>
+            <h2>{{ cientifico['fechas'] }}</h2>
+            <h2>{{ cientifico['lugarNacimiento'] }}</h2>
+            <p>
+                {{ cientifico['descripcion'] }}
+            </p>
+                    
+            <!--Botones sociales. Redirigen a las reder sociales del Premio Nobel y a la pagina de impresión-->>
+            <nav>
+                <ul>
+                    <li><a href="https://twitter.com/NobelPrize">Twitter</a></li>
+                    <li><a href="https://www.facebook.com/nobelprize/?locale=es_LA">Facebook</a></li>
+                    <li><a href="cientifico_imprimir.php?id={{ cientifico['id'] }}">Imprimir</a></li>
+                </ul> 
+            </nav>
+        </div>
+
+        <div class="imagenesCientifico">
+            <img src="{{ urlImagen1 }}" alt="{{ cientifico['nombre'] }}">
+            <p>{{ cientifico['nombre'] }} en algún momento</p>
+            <img src="{{ urlImagen2 }}" alt="{{ cientifico['nombre'] }}">
+        </div>
+    </div> 
+        
+        
+        
+        <!-- Panel auxiliar
+            <div class="panel-auxiliar">
+                <h1>Panel Auxiliar</h1>
+            </div>-->
+
+    <button id="boton-comentarios">
+        <img src="imagenes/comentarios.png" alt="Comentarios">
+    </button>
+
+
+    <!-- Panel deslizante donde se encuentran los comentarios -->
+    <div class="panel-comentarios">
+        <!-- Aquí van los comentarios. Un panel de comentarios donde se 
+        puede ver autor, domentario y fecha:hora del mismo -->
+        <h2>Comentarios</h2>
+        <div class="comentarios">
+            {% if comentarios != NULL %}
+                {% for comentario in comentarios %}
+                <ul class="comment-list">
+                    <div class="comment-info">
+                        <span class="comment-author">{{ comentario.nombreAutor }}</span>
+                    </div>
+
+                    <li class="comment">
+                        <div class="comment-text">{{ comentario.contenido }}</div>
+                        <div class="comment-date">{{ comentario.fecha }}, {{ comentario.hora }}</div>
+                    </li>
+
+                    <!--<div class="comment-info">
+                        <span class="comment-author">{{ comentario2['nombreAutor'] }}</span> 
+                    </div>
+                    
+                    <li class="comment">
+                        <div class="comment-text">{{ comentario2['contenido'] }}</div>
+                        <div class="comment-date">{{ comentario2['fecha'] }}, {{ comentario1['hora'] }}</div>
+                    </li>*/-->
+                    {% if usuario.id_rol == 4 or usuario.id_rol == 2 or comentario.nombreAutor == usuario.nick %}
+                        
+                        <div class="modificarComentario">
+                            <a href="./editarComentario.php?id_comentario={{comentario.id_comentario}}"><img src="https://cdn-icons-png.flaticon.com/512/269/269074.png" height="30" width="30"></a>
+                            <a href="./eliminarComentario.php?id_comentario={{comentario.id_comentario}}"><img src="https://cdn-icons-png.flaticon.com/512/1214/1214926.png" height="30" width="30"></a>
+                        </div>
+                    {% endif %}
+                </ul>
+                {% endfor %}
+            {% endif %}
+        </div>
+
+        <!--Formularión de publicación de comentarios. Consta de tres campos: Nombre, Correo Electrónico, Comentario
+            Además de un botón para enviar los comentarios-->
+        <div class="agregar-comentario">
+            {% block formulario_edicion %}
+                <form action = "nuevoComentario.php" method="post">
+                    <input type="hidden" name="idCientifico" value="{{ idCientifico }}">
+
+                    <!--<label for="nombreAutor">Nombre:</label>-->
+                    <!--<input type="text" id="nombreAutor" name="nombreAutor" placeholder="Agrega tu nombre">--> <!--Campo nombre-->
+
+                    <!--<label for="email">Correo electrónico:</label>-->
+                    <!--<input type="email" id="email" name="email" placeholder="Agrega tu correo electrónico">--> <!--Campo email-->
+
+                    <!--<label for="contenido">Comentario:</label>
+                    <textarea id="contenido" name="contenido" placeholder="Escribe tu comentario aquí"></textarea> Campo comentario
+                    <button type="submit">Enviar</button> Boton eviar-->
+
+
+                    {% if (usuario.id_rol == 1 or usuario.id_rol == 2 or usuario.id_rol == 3 or usuario.id_rol == 4 ) %}
+                        <label for="contenido">Comentario:</label>
+                        <textarea id="contenido" name="contenido" placeholder="Escribe tu comentario aquí"></textarea>
+                        <button type="submit">Enviar</button>
+                    {% else %}
+                        <!-- Usuario anónimo -->
+                        <div class="usuario-anonimoPanel">
+                            <p>Necesitas iniciar sesión para comentar.</p>
+                            <a href="login.php">Iniciar sesión</a>
+                        </div>
+                    {% endif %} 
+                </form>
+            {% endblock %}
+        </div>
+    </div>
+
+{% endblock %} 
+
+    
+

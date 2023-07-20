@@ -1,0 +1,23 @@
+<p>Permisos de Usuarios: 1. Registrado - 2 Moderador - 3. Gestor - 4. SuperUsuario </p><br><br>
+
+{% for user in usuarios %}
+        <div id="Users">
+            Nombre Usuario: {{user.nick}} -- Id Usuario: {{user.id_usuario}} -- Rol Usuario: {{user.id_rol}}
+        </div><br>
+
+{% endfor %}
+
+<div id="concederRol">
+    <form action="./concederPermisos.php" method="post" >
+        <div class="input">
+                    Usuario: <br> 
+                    <input type="text" id="user" name="user" required />
+        </div>
+        <div class="input">
+                    Rol: <br>
+                    <input type="text" id="rol" name="rol" required />
+        </div>
+                <input type="submit" value="Conceder Permiso" />
+                <p><a href="/index.php">Volver al menu principal</a></p>
+    </form>
+</div>

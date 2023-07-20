@@ -1,0 +1,21 @@
+{% extends "padre.html" %}
+
+ {% block titulo %}Cientificos relevantes {% endblock %}
+
+  {% block central %}
+
+                <!-- Se subdivide en un grid-layout con los cientificos y un panel auxiliar -->
+                <div class="grid-container">
+                    {% for cientifico in cientificos %}
+                        {% if cientifico.publicado == 1%}
+                        <div>
+                            <a href="cientifico.php?id={{ cientifico.id }}">
+                                <img src="imagenes/{{ cientifico.nombre|replace({' ': ''})|raw }}1.jpg" alt="{{ cientifico.nombre }}">
+                                <p>{{ cientifico.nombre }}</p>
+                            </a>
+                        </div>
+                        {% endif %}
+                    {% endfor %}
+                </div>
+               
+{% endblock %}
