@@ -1,0 +1,55 @@
+/*Debido a problemas enviando la BD he decidido poner los comandos para rellenarla, su nombre es SIBW*/
+
+
+CREATE TABLE cientificos (
+  id int NOT NULL auto_increment PRIMARY KEY,
+  nombre varchar(100),
+  fechas tinytext,
+  descripcion text,
+  lugarNacimiento tinytext
+);
+
+
+INSERT INTO cientificos (nombre, fechas, descripcion, lugarNacimiento) VALUES 
+('Marie Curie', '07/11/1867 - 04/07/1934', 'Marie Curie fue una física y química polaca-francesa que realizó importantes investigaciones en el campo de la radiactividad. Fue la primera mujer en recibir un Premio Nobel y la única en recibir dos en diferentes categorías: Física y Química. Sus investigaciones sobre la radiactividad sentaron las bases para el desarrollo de la radioterapia y la radiografía. También descubrió dos nuevos elementos químicos, el radio y el polonio, y fue la primera en utilizar la radiactividad para tratar el cáncer. Sus logros incluyen los primeros estudios sobre el fenómeno de la radiactividad (término que ella misma acuñó),​ técnicas para el aislamiento de isótopos radiactivos y el descubrimiento de dos elementos: el polonio y el radio.', 'Varsovia');
+
+INSERT INTO cientificos (nombre, fechas, descripcion, lugarNacimiento) VALUES 
+('Alexander Fleming', '06/08/1881 - 11/03/1955', 'Alexander Fleming fue un médico e investigador escocés que es más conocido por su descubrimiento de la penicilina en 1928, un antibiótico que revolucionó la medicina moderna al combatir enfermedades infecciosas causadas por bacterias. Fleming descubrió la penicilina después de observar que un molde había contaminado una de sus placas de cultivo bacteriano, y notó que alrededor del molde no crecían bacterias. A partir de su descubrimiento, se comenzó a producir la penicilina a gran escala para tratar diversas enfermedades y Fleming fue galardonado con el Premio Nobel de Fisiología o Medicina en 1945.', 'Escocia');
+
+
+CREATE TABLE comentarios(
+  id_cientifico INT NOT NULL REFERENCES cientificos(id_Cientifico),
+  id_comentario INT NOT NULL,
+  nombreAutor VARCHAR(100) NOT NULL,
+  fecha DATE NOT NULL,
+  hora TIME NOT NULL,
+  contenido TEXT,
+  PRIMARY KEY (id_comentario)
+);
+
+ALTER TABLE mensajes AUTO_INCREMENT = 1;
+
+INSERT INTO comentarios(id_cientifico, nombreAutor, fecha, hora, contenido)
+VALUES
+  (1, 'Albert Einstein', '1913-06-19', '12:34:00', 'Enhorabuena compañera'),
+  (1, 'Pierre Curie', '1901-02-18', '10:22:00', 'Muchos besos'),
+  (2, 'Marie Curie', '1933-02-23', '11:15:00', 'Tu descubrimiento ha sido de gran importancia para la humanidad.'),
+  (2, 'Louis Pasteur', '1950-10-14', '16:30:00', 'Gracias a tu trabajo la penicilina se ha convertido en uno de los medicamentos más importantes de la historia.');
+
+INSERT INTO comentarios(id_cientifico, nombreAutor, fecha, hora, contenido)
+VALUES
+  (1, 'Alfred Nobel', '1930-10-14', '16:30:00', 'No veas como la lié de parda con lo de la dinamita.');
+
+
+SELECT * FROM mensajes;
+
+
+
+CREATE TABLE palabras_prohibidas (
+    id INT NOT NULL AUTO_INCREMENT PRIMARY KEY,
+    palabra VARCHAR(50) NOT NULL
+);
+
+INSERT INTO palabras_prohibidas (palabra) VALUES ('puta'), ('idiota'), ('mierda'),('joder'),('cabron'), ('coño') ... ;
+
+'puta', 'idiota', 'mierda', 'joder', 'cabron', 'coño'
