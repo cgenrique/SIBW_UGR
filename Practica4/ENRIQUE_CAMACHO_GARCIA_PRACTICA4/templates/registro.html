@@ -1,0 +1,21 @@
+{% extends "padre.html" %}
+
+{% block enlace_css %}
+{% endblock %}
+
+{% block registro_login %}
+    <div id="registro">
+      <form action="registro.php" method="post">
+        Nick: <input type="text" name="nick" /><br>
+        Password: <input type="password" name="contrasenia" /><br>
+        Nombre: <input type="text" name="nombre"/><br>
+        Apellidos: <input type="text" name="apellidos"/><br>
+        Email: <input type="text" name="email"/><br>
+        Telefono: <input type="text" name="telefono"/><br>
+        <input type="submit" value="Registrarse" />
+      </form>
+    </div>
+
+{% endblock %}
+
+{% block central %}{% endblock %}

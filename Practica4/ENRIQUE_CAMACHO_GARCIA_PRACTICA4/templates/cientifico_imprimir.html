@@ -1,0 +1,42 @@
+{% extends "padre.html" %}
+
+    {% block styles %} <link rel="stylesheet" href="styles/styles _imprimir.css"> {% endblock %}
+    {% block titulo %}{{ cientifico['nombre'] }} Imprimir{% endblock %}
+
+
+    {% block cabecera %}
+    <header>
+        <div class="title">
+            <h1> Mentes mas brillantes de la historia</h1>
+        </div>
+
+        <div class="logo">
+            <img src="imagenes/logo.jpg">
+        </div>
+    </header>
+
+    {% endblock %}
+
+    {% block central %}
+        <div class="cientifico">
+            <div class="infoCientifico">
+                <h1>{{ cientifico['nombre'] }}</h1>
+                <h2>{{ cientifico['fechas'] }}</h2>
+                <h2>{{ cientifico['lugarNacimiento'] }}</h2>
+                <p>
+                    {{ cientifico['descripcion'] }}
+                </p>
+              
+            </div>
+
+            <div class="imagenesCientifico">
+                <img src="{{ urlImagen1 }}" alt="{{ cientifico['nombre'] }}">
+                <p>{{ cientifico['nombre'] }} en algún momento</p>
+                <img src="{{ urlImagen2 }}" alt="{{ cientifico['nombre'] }}">
+            </div>
+        </div>
+    {% endblock %}
+
+    {% block panelAuxiliar %}{% endblock %}
+
+

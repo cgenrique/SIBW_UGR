@@ -1,0 +1,445 @@
+body{
+  background-color: #f1f1f1;
+}
+
+p {
+    color: white;
+    text-align: center;
+    
+}
+
+/*El logo de la pagina*/
+.logo img{
+  max-width: 200px;
+}
+
+/*Panel de navegación de los menús*/
+nav {
+  display: flex;
+  justify-content: center;
+}
+
+nav li{
+  padding-right: 10px;
+}
+
+/*Dentro del panel hay una lista desordenada*/
+ul {
+  display: flex;
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  margin: 0 10px;
+}
+
+
+/*Enlaces*/
+a {
+  color: white;
+  text-decoration: none;
+}
+
+/*Formato del titulo y el menu de navegación*/
+.title{
+  font-family: chulapa;
+  text-align: center;
+  flex-grow: 1;
+}
+
+/*Formato de los titulos*/
+h1{
+  font-family: chulapa;
+  font-size: 40px;
+  text-align: center;
+  margin: 30px;
+}
+
+/*Formato de la cabecera: colores, estructuración, bordes...*/
+header{
+  display: flex;
+  align-items: center;
+  border-radius: 10px;
+  color: white;
+  background-color: #383838;
+  padding: 20px;
+  justify-content: space-between;
+}
+
+/*Formato de las secciones*/
+section {
+  display: flex;
+  margin-top: 20px;
+}
+
+
+/*Grid-layout donde se encuentran las fotos de los científicos*/
+.grid-container {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  grid-gap: 20px;
+  /*grid-area: scientists;*/
+  border-radius: 10px;
+
+  background-color: #383838;
+}
+
+/*Parrafos*/
+.grid-container p {
+  text-align: center;
+  font-family: chulapa;
+  font-size: 1.2rem; /* tamaño de fuente relativo */
+  padding-bottom: 20px;
+}
+
+/*Imágenes de los cientificos*/
+.grid-container img {
+  max-width: 300px;
+  max-height: 400px;
+  width: 100%;
+  height: 100%;
+  padding: 20px;
+  padding-bottom: 0px;
+  object-fit: cover;
+}
+
+/*Panel auxiliar derecho*/
+.panel-auxiliar {
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  margin-top: 20px;
+  background-color: white;
+  border-radius: 10px;
+  background-color: #383838;
+  color: white;
+  margin-left: 20px;
+  text-align: center;
+  /*grid-area: panel;*/
+}
+
+.panel-auxiliar h1{
+  white-space: nowrap;
+  margin: 20px;
+  text-align: center;
+  font-family: chulapa;
+}
+
+
+.panel-auxiliar p {
+  color: #171717;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.panel-auxiliar a {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: green;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.panel-auxiliar a:hover {
+  background-color: yellowgreen;
+}
+
+
+
+
+/*Pagina de un científico, a su vez subdividida por infocientifico y imagenes Cientifico*/
+.cientifico{
+  display: flex;
+  border-radius: 10px;
+  background-color: #383838;
+}
+
+/*Información del científico en formato texto. Puesto en formato columna (nombre, fechas, lugar, información) */
+.infoCientifico{
+  flex-direction: column;
+  align-items: center;
+}
+
+.cientifico p{
+  text-align: justify;
+  font-size: 25px;
+  margin-left: 30px;
+}
+
+/*Imágenes de un científico en formato columna una sobre otra*/
+.imagenesCientifico{
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  width: 45%;
+  margin-left: 5%;
+}
+
+.imagenesCientifico img{
+  padding: 20px;
+  max-width: 250px;
+  max-height: 300px;
+}
+
+.imagenesCientifico p{
+  font-size: 20px;
+  margin: 0px;
+}
+
+.cientifico h1{
+  color: white;
+  text-align: left;
+  font-size: 36px;
+  margin-bottom: 20px;
+}
+
+.cientifico h2{
+  color: white;
+  margin-bottom: 20px;
+  margin: 30px;
+  margin-top: 0px;
+  margin-bottom: 0px;
+}
+
+/*Botones sociales*/
+.cientifico nav{
+  font-size: 20px;
+}
+
+/*Botón flotante para abrir el panel deslizante de los compentarios*/
+#boton-comentarios{
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  z-index: 9999;
+  background-color: white;
+  color: white;
+  border-radius: 100%;
+  padding: 15px;
+  text-align: center;
+  font-size: 30px;
+  cursor: pointer;
+}
+
+
+#boton-comentarios img{
+  max-width: 70px;
+  max-height: 70px;
+}
+
+
+/*Panel deslizante donde se encuentran los comentarios*/
+.panel-comentarios {
+  position: fixed;
+  top: 0;
+  right: -400px; /* Lo ocultamos fuera de la pantalla */
+  width: 400px;
+  height: 100%;
+  background-color: white;
+  text-align: center;
+  transition: right 0.3s ease-in-out; /* Animamos la transición */
+}
+
+.panel-comentarios.abierto {
+  right: 0; /* Lo movemos hacia la derecha para mostrarlo */
+}
+
+
+/*Formato de cada comentario*/
+.comment {
+  position: relative;
+  margin-bottom: 20px;
+  padding: 10px;
+  border: 1px solid #ccc;
+  word-break: break-word;
+}
+
+.comment-info {
+  margin-bottom: 10px;
+  display: flex;
+  justify-content: space-between;
+}
+
+/*Autor del comentario*/
+.comment-author {
+  font-weight: bold;
+}
+
+
+/*Contenido del comentario*/
+.comment-text {
+  margin-bottom: 1rem;
+  margin-top: 10px;
+  min-width: 100px;
+}
+
+/*Fecha del comentario*/
+.comment-date {
+  position: absolute;
+  bottom: 0;
+  right: 0;
+  font-size: 0.8em;
+  color: #999;
+}
+
+/*Cuadro de comentarios*/
+.comentarios {
+  border: 1px solid #ccc;
+  padding: 10px;
+  margin: 10px;
+}
+
+/*Formato de la lista de comentarios*/
+.panel-comentarios .comentarios{
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  max-height: 400px; /* altura máxima deseada para el contenedor de comentarios */
+  overflow-y: auto;
+}
+
+/*Formulario para agregar comentario*/
+.agregar-comentario {
+  height: 80px;
+  padding: 10px;
+  box-sizing: border-box;
+  
+}
+
+/*.agregar-comentario input[type="text"] {
+  width: 100%;
+  height: 40px;
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}*/
+
+.agregar-comentario textarea {
+  width: 100%;
+  height: 100px;
+  resize: none; /* Deshabilita la capacidad de redimensionar */
+  margin-bottom: 10px;
+  box-sizing: border-box;
+}
+
+/*Botón de enviar*/
+.agregar-comentario button[type="submit"] {
+  width: 100%;
+  height: 30px;
+  background-color: #337ab7;
+  color: white;
+  border: none;
+  border-radius: 3px;
+  cursor: pointer;
+}
+
+.agregar-comentario button[type="submit"]:hover {
+  background-color: #2e6da4;
+}
+
+#comentario {
+  height: 150px;
+}
+
+/*Tamaño máximo de los campos del formulario*/
+form {
+  display: grid;
+  grid-template-columns: max-content 1fr;
+  grid-row-gap: 10px;
+  align-items: center;
+}
+
+.input {
+  display: flex;
+  align-items: center;
+}
+
+.input label {
+  width: 100px;
+  text-align: right;
+  margin-right: 10px;
+}
+
+.usuario-anonimo {
+  text-align: center;
+  margin-top: 20px;
+  margin-left: 60px;
+  margin-bottom: 20px;
+}
+
+.usuario-anonimo p {
+  color: #171717;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.usuario-anonimo a {
+  display: inline-block;
+  padding: 10px 20px;
+  background-color: green;
+  color: white;
+  text-decoration: none;
+  border-radius: 5px;
+  transition: background-color 0.3s ease;
+}
+
+.usuario-anonimo a:hover {
+  background-color: yellowgreen;
+}
+
+
+
+#loggeo {
+  text-align: center;
+  margin-top: 20px;
+  margin-bottom: 20px;
+}
+
+#loggeo form {
+  display: inline-block;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+
+
+#registro {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh; /* Ajusta la altura según tus necesidades */
+}
+
+#registro form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+#registro .input {
+  display: flex;
+  align-items: center;
+  margin-bottom: 10px;
+}
+
+
+
+
+/*Pie de foto*/
+footer{
+  /*border-radius: 10px;*/
+  margin-top: 10px;
+  text-align: center;
+  font-family: chulapa;
+  font-size: 20px;
+  color: white;
+  background-color: #383838;
+}
+

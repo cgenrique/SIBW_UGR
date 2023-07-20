@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+<head>
+     <!-- Llamada a la hoja de estilo CSS -->
+    {% block styles %} <link rel="stylesheet" href="styles/styles.css"> {% endblock %}
+
+    {% block scripts %} {% endblock %}
+
+    <!-- Titulo de la pestaña -->
+    <title>{% block titulo %}{% endblock %}</title> 
+</head>
+
+<!-- Cabecera formada por logo, título y menú de navegación -->
+    
+<header>
+    {% block cabecera %}
+    <div class="logo">
+        <img src="imagenes/logo.jpg">
+    </div>
+
+    <div class="title">
+        <h1> Mentes mas brillantes de la historia</h1>
+        <nav>
+            <ul>
+                <li><a href="/index.php">Inicio</a></li>
+                <li><a href="/cuenta_usuario.php">Perfil</a></li>
+                <li><a href="#">Menu3</a></li>
+            </ul> 
+        </nav>
+    </div>
+    {% endblock %}
+</header>
+
+
+<!-- Cuerpo de la página -->
+<body>
+    <section>  
+            <section>
+                {% block central %}
+
+                <p>Parte central de la plantilla</p>
+
+                {% endblock %}
+            </section>
+            
+            
+                        <!-- Panel auxiliar -->
+            <div class="panel-auxiliar">
+                {% block registro_login %}
+                    <h1>Panel Auxiliar</h1>
+                        <div class="registro-login">
+                        {% if usuario.id_rol == 1 %}
+                            <div>
+                                <p>Rol: Registrado</p>
+                            </div>
+
+                        {% elseif usuario.id_rol == 2 %}
+                            <div>
+                                <p>Rol: Moderador</p>
+                            </div>
+
+                        {% elseif usuario.id_rol == 3 %}
+                            <div>
+                                <p>Rol: Gestor</p>
+                            </div>
+
+                        {% elseif usuario.id_rol == 4 %}
+                            <div>
+                                <p>Rol: Root</p>
+                            </div>
+
+                        {% endif %}
+
+                    {% if (usuario.id_rol == 1 or usuario.id_rol == 2 or usuario.id_rol == 3 or usuario.id_rol == 4 ) %}
+                        <div>
+                            <p>User: {{usuario.nick}} <a href="cuenta_usuario.php" id="perfil_redirect">Mi cuenta</a></p>
+                        </div>
+
+                        <div>
+                            <p>Nombre: {{usuario.nombre}}</p>
+                        </div>
+
+                        <div>
+                            <p>Apellido: {{usuario.apellidos}}</p>
+                        </div>
+
+                        <div>
+                            <p><a href="cambiarPerfil.php" id="modificar_perfil">Modificar Perfil</a></p>
+                        </div>
+
+                        <div>
+                            <p><a href="logout.php" id="cerrar_sesion">Cerrar Sesión</a></p>
+                        </div>
+                    {% else %}
+                        <div class="usuario-anonimo">
+                            <div>
+                                <p>Usuario: Anónimo</p>
+                            </div>
+
+                            <div>
+                                <p><a href="/registro.php" id="login_redirect">Registrarse</a></p>
+                                <p><a href="/login.php" id="login_redirect">Iniciar sesión</a></p>
+                            </div>
+                        </div>
+                    {% endif %}
+                {% endblock %}
+            </div>
+    </section>
+</body>
+
+<!--Pie de págia con información de contacto -->
+<footer>
+    &copy; 2023 Enrique Camacho Garcia - cgenrique@correo.ugr.es
+</footer>
+
+</html>

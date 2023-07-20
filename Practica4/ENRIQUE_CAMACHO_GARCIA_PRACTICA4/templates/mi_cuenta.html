@@ -1,0 +1,28 @@
+{% extends "padre.html" %}
+
+{% block registro_login %}
+<div id="cuenta">
+	{% if usuario%}
+	<h2>Cuenta del Usuario</h2>
+		<p>Usuario: {{usuario.nick}}</p>
+		<p>Nombre: {{usuario.nombre}}</p>
+		<p>Apellidos: {{usuario.apellidos}}</p>
+		<p>Email: {{usuario.email}}</p>
+		<p>Telefono: {{usuario.telefono}}</p>
+		<p>Rol de Usuario: {% if usuario.id_rol == 1 %} Registrado {% endif%} {% if usuario.id_rol == 2 %} Moderador {% endif%} {% if usuario.id_rol == 3 %} Gestor {% endif%} {% if usuario.id_rol == 4 %} SuperUsuario {% endif%}
+		<p>Si desea volver a la pagina de inicio: </p>
+        </p> <a href="index.php">Aqui</a></p>
+		<p>Para cambiar algun campo de usuario:</p>
+        <p> <a href="cambiarPerfil.php">Cambiar datos Usuario</a></p>
+	{% else%}
+		<!-- Usuario anónimo -->
+		<div class="usuario-anonimo">
+			<p>¿Aún no has iniciado sesión?</p>
+			<a href="login.php">Iniciar sesión</a>
+		</div>
+	{% endif %} 
+</div>
+{% endblock %}
+
+
+{% block central %}{% endblock %}

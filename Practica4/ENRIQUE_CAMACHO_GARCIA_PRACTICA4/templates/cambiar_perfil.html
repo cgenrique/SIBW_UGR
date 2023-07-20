@@ -1,0 +1,29 @@
+{% extends "padre.html" %}
+
+{% block registro_login %}
+    <div id="loggeo">
+        <form action="./cambiarPerfil.php?id={{usuario.id}}" method="post">
+            <div class="input">
+                Usuario: 
+                <input type="text" id="nick" placeholder="{{usuario.nick}}" name="nick" />
+            </div>
+            <div class="input">
+                Password:
+                <input type="password" id="contrasenia" placeholder="Contraseña" name="contrasenia" />
+            </div>
+            <div class="input">
+                Email:
+                <input type="text" id="email" placeholder="{{usuario.email}}" name="email" />
+            </div>
+            <div class="input">
+                Telefono:
+                <input type="text" id="telefono" placeholder="{{usuario.telefono}}" name="telefono"/>
+            </div>
+            <input type="submit" value="Actualizar Usuario" />
+            <p><a href="/index.php">Volver al menú principal</a></p>
+        </form>
+    </div>
+{% endblock %}
+
+{% block central %}{% endblock %}
+
